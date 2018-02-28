@@ -31,6 +31,15 @@ Just replace usages of the `Neos.Fusion:Image` prototype with `Visol.Neos.Respon
 ```
 
 
+Or use the ViewHelper provided. e.g.
+
+```
+{namespace responsiveImages=Visol\Neos\ResponsiveImages\ViewHelpers}
+
+<responsiveImages:image image="{item.properties.sliderImage}" ratio="1.89583" />
+```
+
+
 ## Configuration
 
 Adjust the desired image sizes in your `Settings.yaml`
