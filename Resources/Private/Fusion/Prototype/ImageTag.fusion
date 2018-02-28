@@ -14,7 +14,13 @@ prototype(Visol.Neos.ResponsiveImages:ImageTag) < prototype(Neos.Fusion:Tag) {
     tagName = 'img'
     attributes {
         class = 'lazyload'
-        data-srcset = Visol.Neos.ResponsiveImages:SrcSet
+        data-srcset = Visol.Neos.ResponsiveImages:SrcSet {
+            asset = ${asset}
+            ratio = ${ratio}
+            maximumWidth = ${maximumWidth}
+            maximumHeight = ${maximumHeight}
+            allowCropping = ${allowCropping}
+        }
         data-sizes = 'auto'
     }
 }
