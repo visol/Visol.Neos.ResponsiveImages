@@ -1,0 +1,20 @@
+
+prototype(Visol.Neos.ResponsiveImages:ImageTag) < prototype(Neos.Fusion:Tag) {
+    asset = 'pass-the-media-asset'
+    ratio = NULL
+    maximumWidth = NULL
+    maximumHeight = NULL
+    allowCropping = FALSE
+    @context.asset = ${this.asset}
+    @context.ratio = ${this.ratio}
+    @context.maximumWidth = ${this.maximumWidth}
+    @context.maximumHeight = ${this.maximumHeight}
+    @context.allowCropping = ${this.allowCropping}
+
+    tagName = 'img'
+    attributes {
+        class = 'lazyload'
+        data-srcset = Visol.Neos.ResponsiveImages:SrcSet
+        data-sizes = 'auto'
+    }
+}

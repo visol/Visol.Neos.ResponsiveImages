@@ -1,0 +1,12 @@
+
+prototype(Visol.Neos.ResponsiveImages:SrcSet) {
+    @class = 'Visol\\Neos\\ResponsiveImages\\Fusion\\SrcSetImplementation'
+    @exceptionHandler = 'Neos\\Fusion\\Core\\ExceptionHandlers\\AbsorbingHandler'
+
+    asset = 'pass-the-media-asset'
+    sizes = ${Configuration.setting('Visol.Neos.ResponsiveImages.SizesPresets.Default')}
+    ratio = NULL
+    maximumWidth = NULL
+    maximumHeight = NULL
+    allowCropping = FALSE
+}

@@ -1,0 +1,26 @@
+Neos:
+  Neos:
+    fusion:
+      autoInclude:
+        Visol.Neos.ResponsiveImages: true
+
+Visol:
+  Neos:
+    ResponsiveImages:
+      SizesPresets:
+        Default:
+          # Opinionated list based on https://en.wikipedia.org/wiki/List_of_common_resolutions
+          - 16
+          - 48
+          - 96
+          - 160
+          - 320
+          - 480
+          - 640
+          - 960
+          - 1024
+          - 1440
+          - 1920
+          - 2560
+          - 3840
+          - 5120

@@ -4,7 +4,7 @@
     "description": "Neos package that helps implementing responsive images based on npm's lazyimages",
     "license": "MIT",
     "require": {
-        "neos/neos": "~3.3 || dev-master"
+        "neos/fusion": "~3.3 || dev-master"
     },
     "autoload": {
         "psr-4": {
