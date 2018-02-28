@@ -1,0 +1,19 @@
+{
+    "name": "visol/neos-responsiveimages",
+    "type": "neos-package",
+    "description": "Neos package that helps implementing responsive images based on npm's lazyimages",
+    "license": "MIT",
+    "require": {
+        "neos/neos": "~3.3 || dev-master"
+    },
+    "autoload": {
+        "psr-4": {
+            "Visol\\Neos\\ResponsiveImages\\": "Classes"
+        }
+    },
+    "extra": {
+        "neos": {
+            "package-key": "Visol.Neos.ResponsiveImages"
+        }
+    }
+}
