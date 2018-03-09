@@ -66,7 +66,7 @@ class ImageViewHelper extends AbstractTagBasedViewHelper
      * @param integer $quality Quality of the image
      * @return string an <img...> html tag
      */
-    public function render(ImageInterface $image = null, $ratio = 1, $maximumWidth = null, $maximumHeight = null, $allowCropping = false, $quality = null)
+    public function render(ImageInterface $image = null, $ratio = null, $maximumWidth = null, $maximumHeight = null, $allowCropping = false, $quality = null)
     {
         $sizes = $this->sizesPresets['Default'];
 
