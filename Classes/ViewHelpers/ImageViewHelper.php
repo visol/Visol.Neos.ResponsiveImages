@@ -72,8 +72,13 @@ class ImageViewHelper extends AbstractTagBasedViewHelper
 
         $srcSetString = $this->srcSetService->getSrcSetAttribute($image, $ratio, $maximumWidth, $maximumHeight, $allowCropping, $quality, $sizes, null);
 
+        $classNames = ['lazyload'];
+        if (isset($this->arguments['class'])) {
+            $classNames[] = $this->arguments['class'];
+        }
+
         $this->tag->addAttributes([
-            'class' => 'lazyload',
+            'class' => implode(' ', $classNames),
             'data-sizes' => 'auto',
             'data-srcset' => $srcSetString,
         ]);
