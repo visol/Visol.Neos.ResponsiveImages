@@ -30,7 +30,7 @@ To install the package correctly go to your theme package (e.g.Packages/Sites/Vi
 Just replace usages of the `Neos.Fusion:Image` prototype with `Visol.Neos.ResponsiveImages:ImageTag`. e.g.
 
 ```
-    imageUri = Visol.Neos.ResponsiveImages:ImageTag {
+    image = Visol.Neos.ResponsiveImages:ImageTag {
         asset = ${q(event).property('teaserImage')}
         ratio = 1.46
     }
