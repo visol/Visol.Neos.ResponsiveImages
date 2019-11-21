@@ -5,7 +5,7 @@ This Neos package helps using npm's lazysizes strategy to implement responsive i
 
 ## Installation
 
-To install the package correctly go to your theme package (e.g.Packages/Sites/Visol.Site) and run following command:
+To install the package correctly, go to your theme package (e.g. `Packages/Sites/Visol.Site`) and run the following command:
 
   ```
   composer require visol/neos-responsiveimages --no-update
@@ -17,7 +17,7 @@ To install the package correctly go to your theme package (e.g.Packages/Sites/Vi
   npm install lazysizes --save
   ```
 
-* Add JavaScript sources to your main script
+* Add the JavaScript sources to your main script
   ```
   import 'lazysizes/plugins/parent-fit/ls.parent-fit.min';
   import 'lazysizes/plugins/bgset/ls.bgset.min';
