@@ -5,13 +5,19 @@ This Neos package helps using npm's lazysizes strategy to implement responsive i
 
 ## Installation
 
+To install the package correctly, go to your theme package (e.g. `Packages/Sites/Visol.Site`) and run the following command:
+
+  ```
+  composer require visol/neos-responsiveimages --no-update
+  ```
+
 * Install lazysizes. E.g. with npm
 
   ```
   npm install lazysizes --save
   ```
 
-* Add JavaScript sources to your main script
+* Add the JavaScript sources to your main script
   ```
   import 'lazysizes/plugins/parent-fit/ls.parent-fit.min';
   import 'lazysizes/plugins/bgset/ls.bgset.min';
@@ -24,7 +30,7 @@ This Neos package helps using npm's lazysizes strategy to implement responsive i
 Just replace usages of the `Neos.Fusion:Image` prototype with `Visol.Neos.ResponsiveImages:ImageTag`. e.g.
 
 ```
-    imageUri = Visol.Neos.ResponsiveImages:ImageTag {
+    image = Visol.Neos.ResponsiveImages:ImageTag {
         asset = ${q(event).property('teaserImage')}
         ratio = 1.46
     }
