@@ -1,4 +1,3 @@
-
 prototype(Visol.Neos.ResponsiveImages:SrcSet) {
     @class = 'Visol\\Neos\\ResponsiveImages\\Fusion\\SrcSetImplementation'
     @exceptionHandler = 'Neos\\Fusion\\Core\\ExceptionHandlers\\AbsorbingHandler'

@@ -1,15 +1,16 @@
-
 prototype(Visol.Neos.ResponsiveImages:ImageTag) < prototype(Neos.Fusion:Tag) {
     asset = 'pass-the-media-asset'
     ratio = NULL
     maximumWidth = NULL
     maximumHeight = NULL
     allowCropping = FALSE
+    sizes = ${Configuration.setting('Visol.Neos.ResponsiveImages.SizesPresets.Default')}
     @context.asset = ${this.asset}
     @context.ratio = ${this.ratio}
     @context.maximumWidth = ${this.maximumWidth}
     @context.maximumHeight = ${this.maximumHeight}
     @context.allowCropping = ${this.allowCropping}
+    @context.sizes = ${this.sizes}
 
     tagName = 'img'
     attributes {
@@ -20,6 +21,7 @@ prototype(Visol.Neos.ResponsiveImages:ImageTag) < prototype(Neos.Fusion:Tag) {
             maximumWidth = ${maximumWidth}
             maximumHeight = ${maximumHeight}
             allowCropping = ${allowCropping}
+            sizes = ${sizes}
         }
         data-sizes = 'auto'
     }
