@@ -1,4 +1,5 @@
 <?php
+
 namespace Visol\Neos\ResponsiveImages\ViewHelpers;
 
 /*
@@ -32,7 +33,7 @@ class ImageViewHelper extends AbstractTagBasedViewHelper
      * @Flow\InjectConfiguration(package="Visol.Neos.ResponsiveImages.SizesPresets")
      * @var array
      */
-    protected $sizesPresets = array();
+    protected $sizesPresets = [];
 
     /**
      * name of the tag to be created by this view helper
@@ -49,39 +50,53 @@ class ImageViewHelper extends AbstractTagBasedViewHelper
         parent::initializeArguments();
         $this->registerUniversalTagAttributes();
         $this->registerTagAttribute('alt', 'string', 'Specifies an alternate text for an image', true);
+        $this->registerArgument('image', ImageInterface::class, 'The image to be rendered as an image');
+        $this->registerArgument('ratio', 'float', 'The aspect ratio for the image');
+        $this->registerArgument('maximumWidth', 'integer', 'Desired maximum width of the image');
+        $this->registerArgument('maximumHeight', 'integer', 'Desired maximum height of the image');
+        $this->registerArgument(
+            'allowCropping',
+            'boolean',
+            'Whether the image should be cropped if the given sizes would hurt the aspect ratio',
+            false,
+            false
+        );
+        $this->registerArgument('quality', 'integer', 'Quality of the image, from 0 to 100');
     }
 
     /**
      * Renders an HTML img tag with a thumbnail image, created from a given image.
-     *
-     * @param ImageInterface $image The image to be rendered as an image
-     * @param integer $width Desired width of the image
-     * @param integer $maximumWidth Desired maximum width of the image
-     * @param integer $height Desired height of the image
-     * @param integer $maximumHeight Desired maximum height of the image
-     * @param boolean $allowCropping Whether the image should be cropped if the given sizes would hurt the aspect ratio
-     * @param boolean $allowUpScaling Whether the resulting image size might exceed the size of the original image
-     * @param boolean $async Return asynchronous image URI in case the requested image does not exist already
-     * @param string $preset Preset used to determine image configuration
-     * @param integer $quality Quality of the image
      * @return string an <img...> html tag
+     *
+     * @throws \Exception
      */
-    public function render(ImageInterface $image = null, $ratio = null, $maximumWidth = null, $maximumHeight = null, $allowCropping = false, $quality = null)
+    public function render()
     {
         $sizes = $this->sizesPresets['Default'];
 
-        $srcSetString = $this->srcSetService->getSrcSetAttribute($image, $ratio, $maximumWidth, $maximumHeight, $allowCropping, $quality, $sizes, null);
+        $srcSetString = $this->srcSetService->getSrcSetAttribute(
+            $this->arguments['image'],
+            $this->arguments['ratio'],
+            $this->arguments['maximumWidth'],
+            $this->arguments['maximumHeight'],
+            $this->arguments['allowCropping'],
+            $this->arguments['quality'],
+            $sizes,
+            null
+        );
 
         $classNames = ['lazyload'];
         if (isset($this->arguments['class'])) {
             $classNames[] = $this->arguments['class'];
         }
 
-        $this->tag->addAttributes([
-            'class' => implode(' ', $classNames),
-            'data-sizes' => 'auto',
-            'data-srcset' => $srcSetString,
-        ]);
+        $this->tag->addAttributes(
+            [
+                'class' => implode(' ', $classNames),
+                'data-sizes' => 'auto',
+                'data-srcset' => $srcSetString,
+            ]
+        );
 
         // alt argument must be set because it is required (see $this->initializeArguments())
         if ($this->arguments['alt'] === '') {
