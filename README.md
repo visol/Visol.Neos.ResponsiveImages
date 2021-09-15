@@ -30,10 +30,10 @@ To install the package correctly, go to your theme package (e.g. `Packages/Sites
 Just replace usages of the `Neos.Fusion:Image` prototype with `Visol.Neos.ResponsiveImages:ImageTag`. e.g.
 
 ```
-    image = Visol.Neos.ResponsiveImages:ImageTag {
-        asset = ${q(event).property('teaserImage')}
-        ratio = 1.46
-    }
+image = Visol.Neos.ResponsiveImages:ImageTag {
+    asset = ${q(event).property('teaserImage')}
+    ratio = 1.46
+}
 ```
 
 
@@ -78,10 +78,10 @@ Visol:
 Use `Visol.Neos.ResponsiveImages:SrcSet` prototype to generate srcset-Attribute
 
 ```
-    imageUri = Visol.Neos.ResponsiveImages:SrcSet {
-        asset = ${q(offer).property('image')}
-        ratio = 0.91
-    }
+imageUri = Visol.Neos.ResponsiveImages:SrcSet {
+    asset = ${q(offer).property('image')}
+    ratio = 0.91
+}
 ```
 
 Add class `lazyload` and data-attributes
@@ -90,6 +90,15 @@ Add class `lazyload` and data-attributes
 <div class="lazyload" data-bgset={props.imageUri} data-sizes="auto">
 ```
 
+### Compatibility and Maintenance
+
+This package is currently being maintained for the following versions:
+
+| Neos Version        | Version | Maintained |
+|----------------------------|----------------------------------|------------|
+| Neos 3.x         | 1.x  | Yes |
+| Neos 4.x         | 1.x | Yes |
+| Neos 5.x and above | 2.x  | Yes    |
 
 ### Credits
 
