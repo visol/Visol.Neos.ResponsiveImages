@@ -51,6 +51,7 @@ class ImageViewHelper extends AbstractTagBasedViewHelper
         $this->registerUniversalTagAttributes();
         $this->registerTagAttribute('alt', 'string', 'Specifies an alternate text for an image', true);
         $this->registerArgument('image', ImageInterface::class, 'The image to be rendered as an image');
+        $this->registerArgument('sizes', 'string', 'Comma-separated list of image sizes');
         $this->registerArgument('ratio', 'float', 'The aspect ratio for the image');
         $this->registerArgument('maximumWidth', 'integer', 'Desired maximum width of the image');
         $this->registerArgument('maximumHeight', 'integer', 'Desired maximum height of the image');
@@ -72,7 +73,11 @@ class ImageViewHelper extends AbstractTagBasedViewHelper
      */
     public function render()
     {
-        $sizes = $this->sizesPresets['Default'];
+        if ($this->arguments['sizes']) {
+            $sizes = array_map('trim', explode(',', $this->arguments['sizes']));
+        } else {
+            $sizes = $this->sizesPresets['Default'];
+        }
 
         $srcSetString = $this->srcSetService->getSrcSetAttribute(
             $this->arguments['image'],
